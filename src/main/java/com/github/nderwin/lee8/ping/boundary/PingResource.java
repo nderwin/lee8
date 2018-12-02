@@ -1,7 +1,6 @@
 package com.github.nderwin.lee8.ping.boundary;
 
 import com.github.nderwin.lee8.Property;
-import io.swagger.annotations.Api;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,7 +16,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 
-@Api
 @Stateless
 @LocalBean
 @TransactionAttribute(REQUIRES_NEW)
