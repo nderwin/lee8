@@ -6,6 +6,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,15 +25,20 @@ import static javax.ejb.TransactionAttributeType.REQUIRES_NEW;
 @Consumes(value = MediaType.APPLICATION_JSON)
 public class PingResource {
 
+    @PersistenceContext
+    EntityManager em;
+
     @Inject
     @Property("application.version")
-    private String version;
+    String version;
 
     @GET
     @Path("/")
     public Response get() {
+        final Object result = em.createNativeQuery("SELECT now()").getSingleResult();
+
         return Response
-                .ok(new Ping(version))
+                .ok(new Ping(version + "-" + result))
                 .build();
     }
 
