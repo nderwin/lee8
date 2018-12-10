@@ -1,6 +1,16 @@
 version: '3.7'
 
 services:
+    lee8:
+        build:
+            context: .
+        image: nderwin/lee8:latest
+        container_name: lee8
+        depends_on:
+          - database
+        ports:
+          - "8080:8080"
+          - "9990:9990"
     database:
         image: postgres:9.6.3
         container_name: lee8db

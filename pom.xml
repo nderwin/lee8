@@ -32,19 +32,6 @@
         <url>https://github.com/nderwin/lee8</url>
     </scm>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- Thorntail && Microprofile -->
-            <dependency>
-                <groupId>io.thorntail</groupId>
-                <artifactId>bom</artifactId>
-                <version>2.2.1.Final</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!-- EE 8 -->
         <dependency>
@@ -53,12 +40,35 @@
             <version>8.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Microprofile -->
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>2.1</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Database driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>lee8</finalName>
 
         <resources>
+            <resource>
+                <directory>${basedir}</directory>
+                <includes>
+                    <include>project-defaults.yml</include>
+                </includes>
+                <targetPath>${project.build.directory}</targetPath>
+            </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
@@ -77,20 +87,15 @@
                             <goal>package</goal>
                         </goals>
                         <configuration>
-                            <hollow>true</hollow>
+                            <hollow>false</hollow>
+                            <bundleDependencies>true</bundleDependencies>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>unknown-jars-temp-repo</id>
-            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-    </repositories>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

@@ -10,7 +10,7 @@ swarm:
     data-sources:
       lee8:
         driver-name: org.postgresql
-        connection-url: jdbc:postgresql://localhost:5432/lee8db
+        connection-url: jdbc:postgresql://database:5432/lee8db
         # These need to be runtime injected, or Docker secrets, or something...
         user-name: lee8
         password: 8eel
