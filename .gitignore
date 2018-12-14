@@ -41,3 +41,6 @@ buildNumber.properties
 
 # Docker secrets
 dockersecrets/*
+
+# Database directory from Docker
+database/*
