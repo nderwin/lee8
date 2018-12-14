@@ -4,8 +4,7 @@
 
 Learning Java EE / Jakarta EE 8 / Microprofile
 
-This project runs in Thorntail, using a hollow jar.  This means that the JDBC driver (PostgreSQL) and
-project configuration files need to be specified on the command line similar to the following:
+This project runs in Thorntail.  The project configuration file is specified on the command line similar to the following:
 
 ```
 java -jar target/lee8-thorntail.jar -s target/project-defaults.yml
