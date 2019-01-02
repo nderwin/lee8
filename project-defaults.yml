@@ -7,13 +7,6 @@ swarm:
         driver-class-name: org.postgresql.Driver
         xa-datasource-class-name: org.postgresql.xa.PGXADataSource
         driver-module-name: org.postgresql
-    data-sources:
-      lee8:
-        driver-name: org.postgresql
-        connection-url: jdbc:postgresql://database:5432/lee8db
-        # These need to be runtime injected, or Docker secrets, or something...
-        user-name: lee8
-        password: 8eel
 management:
   security-realms:
     ManagementRealm:
