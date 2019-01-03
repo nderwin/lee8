@@ -45,6 +45,6 @@ swarm:
         driver-name: org.postgresql
         connection-url: jdbc:postgresql://database:5432/lee8db
         user-name: lee8
-        password: 8eel
+        password: lee8
 ```
 
